@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+{% if userprofile_list %}
+    {% for member in userprofile_list %}
+        <ul>
+            <li><string>Name:</string> {{ member.get_username }}</li>
+            <li><strong>Experence:</strong> {{ member.userprofile.experience }}</li>
+            <li><strong>Skill:</strong> {{ member.userprofile.skill }}</li>
+            <li><strong>Job:</strong> {{ member.userprofile.job }}</li>
+            <li><strong>Cel:</strong> {{ member.userprofile.cel }}</li>
+            <li><strong>Tel:</strong> {{ member.userprofile.tel }}</li>
+        </ul>
+        <br>
+    {% endfor %}
+{% else %}
+    <p>There is no member.</p>
+{% endif %}
+
+{% endblock %}
