@@ -1,6 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+    {% load static %}
+    {% with 'headShot/'|add:profile.get_username|add:'.png' as headShot %}
+        <img class="head-shot" src="{% static headShot %}" width="150px">
+    {% endwith %}
     <p><strong>User:</strong>{{ profile.get_username }}</p>
     <p><strong>Email:</strong>{{ profile.email }}</p>
     <p><strong>Password:</strong>{{ profile.password }}</p>
@@ -10,4 +14,6 @@
     <p><strong>Job:</strong> {{ profile.userprofile.job }}</p>
     <p><strong>Cel:</strong> {{ profile.userprofile.cel }}</p>
     <p><strong>Tel:</strong> {{ memprofileber.userprofile.tel }}</p>
+    <p><strong>Level:</strong>{{ member.userprofile.member_level}}</p>
+    <p><strong>Exp:</strong>{{ member.userprofile.member_exp}}</p>
 {% endblock %}

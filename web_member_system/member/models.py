@@ -14,6 +14,8 @@ class UserProfile(models.Model):
     cel = models.CharField(max_length=100, null=True)
     tel = models.CharField(max_length=100, null=True)
 
+    member_level = models.DecimalField(max_digits=10, decimal_places = 0, default=1)
+    member_exp = models.DecimalField(max_digits=10, decimal_places = 0, default=0)
     # profile_photo = models.ImageField(upload_to='',null=True)
 
     
