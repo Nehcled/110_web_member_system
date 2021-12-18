@@ -76,3 +76,20 @@ def profileUpdate():
 
 def logout():
     pass
+
+
+
+class MemberLevel:
+    def __init__(self, level):
+        self.LEVLE_NAME = ["Basic", "Intermediate", "Advanced"]
+        self.level = self.get_level(level)
+    def get_level(self, level):
+        if 20 >= level >= 1:
+            return self.LEVLE_NAME[0]
+        if 40 >= level >= 21:
+            return self.LEVLE_NAME[1]
+        return self.LEVLE_NAME[2]
+    def level_up(self):
+        pass
+    # need to updata data
+        
