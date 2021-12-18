@@ -14,6 +14,9 @@
     <p><strong>Job:</strong> {{ profile.userprofile.job }}</p>
     <p><strong>Cel:</strong> {{ profile.userprofile.cel }}</p>
     <p><strong>Tel:</strong> {{ memprofileber.userprofile.tel }}</p>
+    <br>
+    <p><a href="{% url 'profile-update'%}?next={% url 'profile' %}">Edit</a></p>
     <p><strong>Level:</strong>{{ member.userprofile.member_level}}</p>
     <p><strong>Exp:</strong>{{ member.userprofile.member_exp}}</p>
+
 {% endblock %}
