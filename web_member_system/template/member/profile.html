@@ -9,5 +9,7 @@
     <p><strong>Skill:</strong> {{ profile.userprofile.skill }}</p>
     <p><strong>Job:</strong> {{ profile.userprofile.job }}</p>
     <p><strong>Cel:</strong> {{ profile.userprofile.cel }}</p>
-    <p><strong>Tel:</strong> {{ memprofileber.userprofile.tel }}</p>
+    <p><strong>Tel:</strong> {{ profile.userprofile.tel }}</p>
+    <br>
+    <p><a href="{% url 'profile-update'%}?next={% url 'profile' %}">Edit</a></p>
 {% endblock %}
