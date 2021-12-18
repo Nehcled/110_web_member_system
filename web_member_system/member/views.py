@@ -29,17 +29,17 @@ def register(request):
     
     return render(request, 'member/register_member_account.html', {'form': form })
 
+
 def registerSuccessful(request):
     return render (request, 'member/register_successful.html')
+
+class test(CreateView):
+    model = User
+
 class UserProfileListView(generic.ListView):
     template_name = 'index.html'
     context_object_name = 'userprofile_list'
     model = User
-
-    # def get_context_data(self, **kwargs):
-    #     context = super(UserProfileView, self).get_context_data(**kwargs)
-    #     context.upCreateWithInlinesViewdate(self.model.userprofile)
-    #     return context
 
 class UserProfileView(LoginRequiredMixin,generic.DetailView):
     template_name = 'member/profile.html'
@@ -48,31 +48,24 @@ class UserProfileView(LoginRequiredMixin,generic.DetailView):
 
     def get_object(self):
         return self.request.user
-
-
-
-
-def updateProfile(request):
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST)
-        if form.is_valid():
-            experience = form.cleaned_data['experience']
-            skill = form.cleaned_data['skill']
-            job = form.cleaned_data['job']
-            cel = form.cleaned_data['cel']
-            tel = form.cleaned_data['tel']
-
-def profile(request):
-    pass
 class UserProfileUpdate(UpdateView):
     model = UserProfile
+    template_name = 'member/profile_update.html'
+    
     fields = ['experience','skill','job','cel','tel']
 
+    success_url = reverse_lazy('profile')
+    def get_object(self):
+        return self.request.user.userprofile
+
+# def updateProfile(request):
+#     if request.method == 'POST':
+#         form = UserProfileForm(request.POST)
+#         if form.is_valid():
+#             experience = form.cleaned_data['experience']
+#             skill = form.cleaned_data['skill']
+#             job = form.cleaned_data['job']
+#             cel = form.cleaned_data['cel']
+#             tel = form.cleaned_data['tel']
 
 
-
-def profileUpdate():
-    pass
-
-def logout():
-    pass
