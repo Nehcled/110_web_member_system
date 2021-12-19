@@ -2,21 +2,23 @@
 
 {% block content %}
     {% load static %}
-    {% with 'headShot/'|add:profile.get_username|add:'.png' as headShot %}
-        <img class="head-shot" src="{% static headShot %}" width="150px">
+    {% with 'head_shot/'|add:profile.userprofile.head_shot as head_shot %}
+        <img class="head-shot" src="{% static head_shot %}" width="150px">
     {% endwith %}
+    <p><strong>Level:</strong>{{ profile.userprofile.member_level}}</p>
+    <p><strong>Exp:</strong>{{ profile.userprofile.member_exp}}</p>
+    <p><a href="{% url 'profile-update'%}?next={% url 'profile' %}">Edit</a></p>
+
     <p><strong>User:</strong>{{ profile.get_username }}</p>
     <p><strong>Email:</strong>{{ profile.email }}</p>
-    <p><strong>Password:</strong>{{ profile.password }}</p>
+    <p><strong>Password:</strong>{{ profile.password }}</p> <!-- Need to removed -->
     <p><strong>Id:</strong>{{ profile.id }}</p>
     <p><strong>Experence:</strong> {{ profile.userprofile.experience }}</p>
     <p><strong>Skill:</strong> {{ profile.userprofile.skill }}</p>
     <p><strong>Job:</strong> {{ profile.userprofile.job }}</p>
     <p><strong>Cel:</strong> {{ profile.userprofile.cel }}</p>
-    <p><strong>Tel:</strong> {{ memprofileber.userprofile.tel }}</p>
-    <br>
-    <p><a href="{% url 'profile-update'%}?next={% url 'profile' %}">Edit</a></p>
-    <p><strong>Level:</strong>{{ member.userprofile.member_level}}</p>
-    <p><strong>Exp:</strong>{{ member.userprofile.member_exp}}</p>
+    <p><strong>Tel:</strong> {{ profile.userprofile.tel }}</p>
+
+    <p>last-login-time: {{profile.userprofile.last_login_time}}</p>  <!-- debug only -->
 
 {% endblock %}
