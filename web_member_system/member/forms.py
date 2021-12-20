@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.db import models
 from django import forms
+from .models import UserProfile
 # from django.utils.translation import ugettext_lazy as _
 import datetime
 import re
@@ -23,10 +24,10 @@ class RegisterUserForm(forms.Form):
         elif len(username) > 25:
             raise ValidationError("Input username is too long!")
         # do we allow same username?
-        # else :
-        #     name_exist = User.objects.filter(username__exact = username)
-        #     if len(name_exist):
-        #         raise ValidationError("Username is already exist!")
+        else :
+            name_exist = User.objects.filter(username__exact = username)
+            if len(name_exist):
+                raise ValidationError("Username is already exist!")
 
         return username 
         
@@ -50,31 +51,50 @@ class RegisterUserForm(forms.Form):
         return password
 
 
-class UserProfileForm(forms.Form):
-    experience = forms.CharField(widget=forms.TextInput)
-    skill = forms.CharField(widget=forms.TextInput)
-    job = forms.CharField(widget=forms.TextInput)
+# use forms.Form can custom form
+# class UserProfileForm(forms.Form):
+#     experience = forms.CharField(widget=forms.TextInput)
+#     skill = forms.CharField(widget=forms.TextInput)
+#     job = forms.CharField(widget=forms.TextInput)
 
-    cel = forms.CharField(max_length=100)
-    tel = forms.CharField(max_length=100)
+#     cel = forms.CharField(max_length=100)
+#     tel = forms.CharField(max_length=100)
 
-    def clean_experience(self):
-        experience = self.cleaned_data['experience']
-        return experience
+#     def clean_experience(self):
+#         experience = self.cleaned_data['experience']
+#         return experience
     
-    def clean_skill(self):
-        skill = self.cleaned_data['skill']
-        return skill
+#     def clean_skill(self):
+#         skill = self.cleaned_data['skill']
+#         return skill
 
-    def clean_job(self):
-        job = self.cleaned_data['job']
-        return job
+#     def clean_job(self):
+#         job = self.cleaned_data['job']
+#         return job
 
-    def clean_cel(self):
-        cel = self.cleaned_data['cel']
-        return cel
+#     def clean_cel(self):
+#         cel = self.cleaned_data['cel']
+#         return cel
 
-    def clean_tel(self):
-        tel = self.cleaned_data['tel']
-        return tel
+#     def clean_tel(self):
+#         tel = self.cleaned_data['tel']
+#         return tel
 
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['experience','skill','job','cel','tel']
+
+    def clean(self):
+        for field, value in self.cleaned_data.items():
+            self.cleaned_data[field] = value
+
+class UserProfilePhotoForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['profile_photo',]
+    
+    def clean_profile_photo(self):
+        profile_photo = self.cleaned_data['profile_photo']
+        return profile_photo

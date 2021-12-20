@@ -1,13 +1,19 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    {% load static %}
-    {% with 'head_shot/'|add:profile.userprofile.head_shot as head_shot %}
-        <img class="head-shot" src="{% static head_shot %}" width="150px">
-    {% endwith %}
+    {% if profile.userprofile.profile_photo %}
+        <img class="head-shot" src = "/media/{{ profile.userprofile.profile_photo }}">    
+    {% else %}
+        {% load static %}
+        {% with 'head_shot/'|add:profile.userprofile.head_shot as head_shot %}
+            <img class="head-shot" src="{% static head_shot %}" width="150px">
+        {% endwith %}
+    {% endif %}
+    
     <p><strong>Level:</strong>{{ profile.userprofile.member_level}}</p>
     <p><strong>Exp:</strong>{{ profile.userprofile.member_exp}}</p>
-    <p><a href="{% url 'profile-update'%}?next={% url 'profile' %}">Edit</a></p>
+    <p><a href="{% url 'profile-update' %}?next={% url 'profile' %}">Edit</a></p>
+    <p><a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">update profile photo</a></p>
 
     <p><strong>User:</strong>{{ profile.get_username }}</p>
     <p><strong>Email:</strong>{{ profile.email }}</p>
