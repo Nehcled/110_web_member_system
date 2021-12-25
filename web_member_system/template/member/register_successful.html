@@ -1,6 +1,35 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>The account registered successful!</h1>
-  <p><a href="{% url 'index' %}">return to home page</a></p>
+
+<style>
+  #rcorners {
+    border-radius: 1em/1em;
+  }
+
+  .down {
+    transform: translateY(30%);
+  }
+</style>
+
+<div class="down">
+  <div class="container-fluid " >
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div id ="rcorners" class="col-sm-4" style="background-color:white"style="top:50">
+        <form class="form-signin" style="" method="POST">
+          {% csrf_token %}
+            <br>
+            <div class="text-center mb-4">
+              <img class="mb-4" src="/static/images/logo.png" alt="" width="auto" height="70">
+              <h1 class="h3 mb-3 font-weight-normal">The account registered successful!</h1>
+              <p><a href="{% url 'index' %}">return to home page</a></p>
+            </div>
+        </form>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+</div>
+  
 {% endblock %}

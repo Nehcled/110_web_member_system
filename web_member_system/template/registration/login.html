@@ -2,6 +2,54 @@
 
 {% block content %}
 
+<style>
+  #rcorners {
+    border-radius: 1em/1em;
+  }
+
+  .down {
+    transform: translateY(30%);
+  }
+</style>
+
+<div class="down">
+  <div class="container-fluid " >
+    <div class="row">
+      <div class="col-sm-4"></div>
+        <div id ="rcorners" class="col-sm-4" style="background-color:white"style="top:50">
+          <form method="POST">
+            {% csrf_token %}
+              <br>
+              <div class="text-center mb-4">
+                <img class="mb-4" src="/static/images/logo.png" alt="" width="auto" height="100">
+                <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+              </div>
+
+              <div class="form-label-group">
+                
+                <input type="text" name="username" class="form-control" placeholder="Username">
+                
+              </div>
+              <br>
+              <div class="form-label-group">
+                <input type="password" name="password" class="form-control" placeholder="Password" >
+              </div>
+              <br>
+              <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Sign in</button>
+              <input type="hidden" name="next" value="{{ next }}" />
+              <a href="{% url 'password_reset' %}">Lost password?</a>
+              <br>
+              <br>
+          </form>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+Original Part
 {% if form.errors %}
   <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
@@ -35,5 +83,5 @@
 
 {# Assumes you setup the password_reset view in your URLconf #}
 <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-
+-->
 {% endblock %}
