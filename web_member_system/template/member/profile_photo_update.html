@@ -2,24 +2,11 @@
 
 {% block content %}
 
-
-
-
-<style>
-  #rcorners {
-    border-radius: 1em/1em;
-  }
-
-  .down {
-    transform: translateY(50%);
-  }
-</style>
-
 <div class="down">
   <div class="container-fluid " >
     <div class="row">
       <div class="col-sm-4"></div>
-        <div id ="rcorners" class="col-sm-4" style="background-color:white"style="top:50">
+        <div id ="rcorners" class="col-sm-4">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <br>

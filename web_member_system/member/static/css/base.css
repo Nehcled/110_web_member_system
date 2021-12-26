@@ -1,0 +1,14 @@
+#rcorners {
+    border-radius: 1em/1em;
+    background-color:white;
+    margin-bottom: 50px;
+    min-height: 500px;
+    width: 1000px;
+}
+.down {
+    transform: translateY(50px);
+}
+.error{
+    text-align:center;
+    color:red;
+}
