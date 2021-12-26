@@ -10,6 +10,11 @@
   .down {
     transform: translateY(30%);
   }
+
+  .error{
+    text-align:center;
+    color:red;
+  }
 </style>
 
 <div class="down">
@@ -17,6 +22,7 @@
     <div class="row">
       <div class="col-sm-4"></div>
         <div id ="rcorners" class="col-sm-4" style="background-color:white"style="top:50">
+          
           <form method="POST">
             {% csrf_token %}
               <br>
@@ -39,6 +45,20 @@
               <input type="hidden" name="next" value="{{ next }}" />
               <a href="{% url 'password_reset' %}">Lost password?</a>
               <br>
+              <div class="error">
+                {% if form.errors %}
+                  <p>Your username and password didn't match. Please try again.</p>
+                {% endif %}
+
+                {% if next %}
+                {% if user.is_authenticated %}
+                  <p>Your account doesn't have access to this page. To proceed,
+                  please login with an account that has access.</p>
+                {% else %}
+                  <p>Please login to see this page.</p>
+                {% endif %}
+                {% endif %}
+              </div>
               <br>
           </form>
         </div>
