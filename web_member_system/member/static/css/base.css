@@ -3,7 +3,6 @@
     background-color:white;
     margin-bottom: 50px;
     min-height: 500px;
-    width: 1000px;
 }
 .down {
     transform: translateY(50px);
