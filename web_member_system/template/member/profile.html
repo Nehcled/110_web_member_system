@@ -1,17 +1,129 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    {% load static %}
-    {% with 'head_shot/'|add:profile.userprofile.head_shot as head_shot %}
-        <img class="head-shot" src="{% static head_shot %}" width="150px">
-    {% endwith %}
+        
+<style>
+<<<<<<< HEAD
+  #rcorners {
+    border-radius: 1em/1em;
+  }
+
+  .down {
+    transform: translateY(10%);
+  }
+
+=======
+>>>>>>> 6b1f4203db3ba11dd382c94002bb2ce4ffb77414
+  p{
+      font-size:18px;
+  }
+
+</style>
+
+<div class=down>
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3"></div>
+<<<<<<< HEAD
+        <div id ="rcorners" class="col-sm-6" style="background-color:white"style="top:50">
+=======
+        <div id ="rcorners" class="col-sm-6">
+>>>>>>> 6b1f4203db3ba11dd382c94002bb2ce4ffb77414
+            <div class="container-fluid " >
+                <div class="row">
+                    <div class="col-sm-7" class="font">
+                        <form method="POST">
+                            <br>
+                            <div>
+                                <h5>Username</h5><p>{{ profile.get_username }}</p>
+                            </div>
+                            <br>
+                            <div>
+                                <h5>Email</h5><p>{{ profile.email }}</p>
+                            </div>
+                            <br>
+                            <div>
+                                <h5>Cellphone</h5><p>{{ profile.userprofile.cel }}</p>
+                            </div>
+                            <br>
+                            <div>
+                                <h5>Telephone</h5><p>{{ profile.userprofile.tel }}</p>
+                            </div>
+                            
+                            <br>
+                            <div>
+                                <h3>Skill</h3><p>{{ profile.userprofile.skill }}</p>
+                            </div>
+                            <br>
+                            <div>
+                                <h3>Experence</h3><p>{{ profile.userprofile.experience }}</p>
+                            </div>
+                            <br>
+                            <div>
+                                <h3>Job</h3><p>{{ profile.userprofile.job }}</p>
+                            </div>
+                            <br>
+                        </form>
+                    </div>
+                    
+                    <div class="col-sm-5">
+                        <form method="POST">
+                            <center>
+                            <br>
+                            <br>
+                            <div>
+                                {% if profile.userprofile.profile_photo %}
+                                    <img class="head-shot" src = "/media/{{ profile.userprofile.profile_photo }}" width=180>    
+                                {% else %}
+                                    {% load static %}
+                                    {% with 'head_shot/'|add:profile.userprofile.head_shot as head_shot %}
+                                        <img class="head-shot" src="{% static head_shot %}" width=180>
+                                    {% endwith %}
+                                {% endif %}
+                                <br>
+                                ID:{{profile.id}}
+                                <br>
+                                Level:{{ profile.userprofile.member_level}}
+                                <br>
+                                Exp:{{ profile.userprofile.member_exp}}
+                                <br>
+                                <a href="{% url 'profile-update' %}?next={% url 'profile' %}">Edit Profile</a>
+                                <br>
+                                <a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">Update Profile Photo</a>
+                            </div>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <!--
+    Original Part
+    {% if profile.userprofile.profile_photo %}
+        <img class="head-shot" src = "/media/{{ profile.userprofile.profile_photo }}">    
+    {% else %}
+        {% load static %}
+        {% with 'head_shot/'|add:profile.userprofile.head_shot as head_shot %}
+            <img class="head-shot" src="{% static head_shot %}" width="150px">
+        {% endwith %}
+    {% endif %}
+    
     <p><strong>Level:</strong>{{ profile.userprofile.member_level}}</p>
     <p><strong>Exp:</strong>{{ profile.userprofile.member_exp}}</p>
-    <p><a href="{% url 'profile-update'%}?next={% url 'profile' %}">Edit</a></p>
+    <p><a href="{% url 'profile-update' %}?next={% url 'profile' %}">Edit</a></p>
+    <p><a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">update profile photo</a></p>
 
     <p><strong>User:</strong>{{ profile.get_username }}</p>
     <p><strong>Email:</strong>{{ profile.email }}</p>
-    <p><strong>Password:</strong>{{ profile.password }}</p> <!-- Need to removed -->
+    <p><strong>Password:</strong>{{ profile.password }}</p>  !!Need to removed!!
     <p><strong>Id:</strong>{{ profile.id }}</p>
     <p><strong>Experence:</strong> {{ profile.userprofile.experience }}</p>
     <p><strong>Skill:</strong> {{ profile.userprofile.skill }}</p>
@@ -19,6 +131,7 @@
     <p><strong>Cel:</strong> {{ profile.userprofile.cel }}</p>
     <p><strong>Tel:</strong> {{ profile.userprofile.tel }}</p>
 
-    <p>last-login-time: {{profile.userprofile.last_login_time}}</p>  <!-- debug only -->
+    <p>last-login-time: {{profile.userprofile.last_login_time}}</p>   !!debug only!!
+    -->
 
 {% endblock %}

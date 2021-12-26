@@ -8,7 +8,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import UserProfile, UserProfileCard
-from .forms import RegisterUserForm, UserProfileForm
+from .forms import RegisterUserForm, UserProfileForm, UserProfilePhotoForm
 
 from datetime import timezone, datetime
 import os
@@ -35,13 +35,10 @@ def register(request):
     
     return render(request, 'member/register_member_account.html', {'form': form })
 
-
 def registerSuccessful(request):
     return render (request, 'member/register_successful.html')
 
-class test(CreateView):
-    model = User
-
+# for index.html
 class UserProfileListView(generic.ListView):
     template_name = 'index.html'
     context_object_name = 'userprofile_list'
@@ -51,35 +48,33 @@ class UserProfileView(LoginRequiredMixin,generic.DetailView):
     template_name = 'member/profile.html'
     context_object_name = 'profile'
     model = User
-
+    
     def get_object(self):
         return self.request.user
+
 class UserProfileUpdate(UpdateView):
     model = UserProfile
+
+    # use custom form to clean the data
+    form_class = UserProfileForm
     template_name = 'member/profile_update.html'
     
-    fields = ['experience','skill','job','cel','tel']
+    # use fields to auto generate form
+    # fields = ['experience','skill','job','cel','tel']
 
     success_url = reverse_lazy('profile')
     def get_object(self):
         return self.request.user.userprofile
 
-# def updateProfile(request):
-#     if request.method == 'POST':
-#         form = UserProfileForm(request.POST)
-#         if form.is_valid():
-#             experience = form.cleaned_data['experience']
-#             skill = form.cleaned_data['skill']
-#             job = form.cleaned_data['job']
-#             cel = form.cleaned_data['cel']
-#             tel = form.cleaned_data['tel']
+class UserProfilePhotoUpdate(UpdateView):
+    model = UserProfile
+    form_class = UserProfilePhotoForm
+    template_name = 'member/profile_photo_update.html'
+    success_url = reverse_lazy('profile')
 
+    def get_object(self):
+        return self.request.user.userprofile
 
-def profileUpdate():
-    pass
-
-def logout():
-    pass
 
 
 CURRENT_DIRRECT = os.path.dirname(os.path.abspath(__file__))

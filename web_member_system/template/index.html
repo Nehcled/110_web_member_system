@@ -1,7 +1,11 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+<<<<<<< HEAD
 
+=======
+<!--
+>>>>>>> 6b1f4203db3ba11dd382c94002bb2ce4ffb77414
 {% if userprofile_list %}
     {% for member in userprofile_list %}
         <ul>
@@ -17,5 +21,19 @@
 {% else %}
     <p>There is no member.</p>
 {% endif %}
+-->
+<style>
+    .welcome{
+        color: #ffffff;
+        font-size: 64pt;
+        text-align: center;
+        letter-spacing: 2px;
+        font-family: Lato, sans-serif;
+        margin-top: 230px;
+    }
+</style>
+<div class="welcome">
+    <p>軟體工程學會 - 會員系統</p>
+</div>
 
 {% endblock %}
