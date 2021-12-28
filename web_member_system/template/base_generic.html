@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  {% block title %}<title>Member System</title>{% endblock %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="https://ssl.gstatic.com/atari/images/public/favicon.ico">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/base' %}.css">
-  <!-- Add additional CSS in static file -->
-  <style>
-    .t{
-      width:100%;
-      height:100%;
-    }
+  <head>
+    {% block title %}
+    <title>Member System</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://ssl.gstatic.com/atari/images/public/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base' %}.css">
+    <!-- Add additional CSS in static file -->
 
-    .jumbotron{
-      background-image: url();
-      margin-bottom: 0%;
-      background-size:cover;
-      width:100%;
-      height:100vh;
-    }
-
-    .container{
-      position: absolute;   
-      top: 50%;             
-      transform: translateY(-50%);
-    }
-
-    /*.container p{
+    <style>
+        .t {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .jumbotron {
+            background-image: url();
+            margin-bottom: 0%;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        /*.container p{
       position: absolute;   
       top: 45%;
       height:10px;             
       transform: translateY(-55%);
     }*/
+        
+        .display-4 {
+            color: white;
+        }
+        
+        .lead {
+            color: white;
+        }
+        
+        .test {
+            width: 100%;
+            height: 50%;
+        }
+        
+        .background {
+            background-image: url("/static/images/home_background_picture.jpg");
+            height: 100vh;
+            background-size: cover;
+            overflow-y: scroll;
+        }
+    </style>
 
-    .display-4{
-      color:white; 
-      
-    }
-    .lead{
-      color:white;
-    }
-    .test{
-      width:100%;
-      height:50%;
-    }
-    .background{
-      background-image: url("/static/images/home_background_picture.jpg"); 
-      height:100vh;
-      background-size:cover;
-      overflow-y:scroll;
-    }
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <div class="background">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{% url 'index' %}">
-        <img src="/static/images/logo.png" width="auto" height="40" alt="">
-        Software Engineering Association Taiwan	
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="background">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="/static/images/logo.png" width="auto" height="40" alt=""> Software Engineering Association Taiwan
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">  
@@ -103,9 +104,9 @@
                 <a class="nav-link disabled" href="#">Disabled</a>
               </li>
               -->
-        </ul>
-      </div>
-    </nav>
+                </ul>
+            </div>
+        </nav>
 
 
 
@@ -114,7 +115,7 @@
 
 
 
-  <!--<div class="t">
+        <!--<div class="t">
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         
@@ -125,10 +126,10 @@
   </div>
   -->
 
-    {% block content %}{% endblock %}
-  </div>
+        {% block content %}{% endblock %}
+    </div>
 
-<!--
+    <!--
   Original Part
   <ul class="sidebar-nav">
     <li><a href="{% url 'index' %}">Home</a></li>
@@ -141,7 +142,7 @@
     {% endif %}
   </ul>
 -->
-  
-</body>
-</html>
 
+</body>
+
+</html>
