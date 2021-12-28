@@ -3,17 +3,6 @@
 {% block content %}
         
 <style>
-<<<<<<< HEAD
-  #rcorners {
-    border-radius: 1em/1em;
-  }
-
-  .down {
-    transform: translateY(10%);
-  }
-
-=======
->>>>>>> 6b1f4203db3ba11dd382c94002bb2ce4ffb77414
   p{
       font-size:18px;
   }
@@ -24,11 +13,7 @@
   <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3"></div>
-<<<<<<< HEAD
-        <div id ="rcorners" class="col-sm-6" style="background-color:white"style="top:50">
-=======
         <div id ="rcorners" class="col-sm-6">
->>>>>>> 6b1f4203db3ba11dd382c94002bb2ce4ffb77414
             <div class="container-fluid " >
                 <div class="row">
                     <div class="col-sm-7" class="font">
@@ -90,6 +75,9 @@
                                 <a href="{% url 'profile-update' %}?next={% url 'profile' %}">Edit Profile</a>
                                 <br>
                                 <a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">Update Profile Photo</a>
+                                <br>
+                                <a href="{% url 'password-change' %}?next={% url 'profile' %}">Password Change</a>
+                                <br>
                             </div>
                             </center>
                         </form>
@@ -102,36 +90,5 @@
   </div>
 </div>
 
-
-
-
-    <!--
-    Original Part
-    {% if profile.userprofile.profile_photo %}
-        <img class="head-shot" src = "/media/{{ profile.userprofile.profile_photo }}">    
-    {% else %}
-        {% load static %}
-        {% with 'head_shot/'|add:profile.userprofile.head_shot as head_shot %}
-            <img class="head-shot" src="{% static head_shot %}" width="150px">
-        {% endwith %}
-    {% endif %}
-    
-    <p><strong>Level:</strong>{{ profile.userprofile.member_level}}</p>
-    <p><strong>Exp:</strong>{{ profile.userprofile.member_exp}}</p>
-    <p><a href="{% url 'profile-update' %}?next={% url 'profile' %}">Edit</a></p>
-    <p><a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">update profile photo</a></p>
-
-    <p><strong>User:</strong>{{ profile.get_username }}</p>
-    <p><strong>Email:</strong>{{ profile.email }}</p>
-    <p><strong>Password:</strong>{{ profile.password }}</p>  !!Need to removed!!
-    <p><strong>Id:</strong>{{ profile.id }}</p>
-    <p><strong>Experence:</strong> {{ profile.userprofile.experience }}</p>
-    <p><strong>Skill:</strong> {{ profile.userprofile.skill }}</p>
-    <p><strong>Job:</strong> {{ profile.userprofile.job }}</p>
-    <p><strong>Cel:</strong> {{ profile.userprofile.cel }}</p>
-    <p><strong>Tel:</strong> {{ profile.userprofile.tel }}</p>
-
-    <p>last-login-time: {{profile.userprofile.last_login_time}}</p>   !!debug only!!
-    -->
 
 {% endblock %}

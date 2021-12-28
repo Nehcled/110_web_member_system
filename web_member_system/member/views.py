@@ -1,27 +1,27 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.signals import user_logged_in
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect, request
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy, reverse
 from django.views import generic
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 
-from .models import UserProfile, UserProfileCard
-from .forms import RegisterUserForm, UserProfileForm, UserProfilePhotoForm
-
+from .models import UserProfile
+from .forms import UserSignUpForm, UserProfileForm, UserProfilePhotoForm
 from datetime import timezone, datetime
 import os
 from PIL import Image, ImageDraw, ImageFont
-from re import template
+
 
 # Create your views here.class
-def register(request):
+def signUp(request):
     if request.method == 'POST':
-        form = RegisterUserForm(request.POST)
+        form = UserSignUpForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+            password = form.cleaned_data['password1']
             email = form.cleaned_data['email']
             
             user = User.objects.create_user(username = username, password = password, email = email)
@@ -29,14 +29,14 @@ def register(request):
             userprofile = UserProfile(user = user)
             userprofile.save()
 
-            return HttpResponseRedirect(reverse('register-successful'))
+            return HttpResponseRedirect(reverse('signup-successful'))
     else:
-        form = RegisterUserForm()
+        form = UserSignUpForm()
     
-    return render(request, 'member/register_member_account.html', {'form': form })
+    return render(request, 'member/signup_member_account.html', {'form': form })
 
-def registerSuccessful(request):
-    return render (request, 'member/register_successful.html')
+def signupSuccessful(request):
+    return render (request, 'member/signup_successful.html')
 
 # for index.html
 class UserProfileListView(generic.ListView):
@@ -44,11 +44,12 @@ class UserProfileListView(generic.ListView):
     context_object_name = 'userprofile_list'
     model = User
 
-class UserProfileView(LoginRequiredMixin,generic.DetailView):
+
+class UserProfileView(LoginRequiredMixin, generic.DetailView):
     template_name = 'member/profile.html'
     context_object_name = 'profile'
     model = User
-    
+
     def get_object(self):
         return self.request.user
 
@@ -75,9 +76,24 @@ class UserProfilePhotoUpdate(UpdateView):
     def get_object(self):
         return self.request.user.userprofile
 
+# class UserPasswordVerify(FormView):
+#     form_class = UserPasswordVerifyForm
+#     template_name = 'member/profile.html'
+
+#     def get_form_kwargs(self):
+#         kwargs = super().get_form_kwargs()
+#         kwargs.update(request = self.request)
+#         return kwargs
+
+#     def get_success_url(self):
+#         return reverse_lazy('profile')
+
+    
+    
 
 
 CURRENT_DIRRECT = os.path.dirname(os.path.abspath(__file__))
+
 class Card:
     def __init__(self, sender, user, request, **kwargs):
         self.user = user.get_username()

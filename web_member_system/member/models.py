@@ -29,11 +29,3 @@ class UserProfile(models.Model):
         return self.user.__str__()
         # return self.skill
     
-class UserProfileCard(models.Model):
-    pass
-    # user_profile = models.OneToOneField(UserProfile,on_delete=models.CASCADE, null=True)
-    
-    # def __str__(self):
-    #     return self.user_profile.user.__str__()
-
-

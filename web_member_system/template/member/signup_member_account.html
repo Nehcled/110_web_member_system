@@ -2,29 +2,11 @@
 
 {% block content %}
 
-<<<<<<< HEAD
-<style>
-  #rcorners {
-    border-radius: 1em/1em;
-  }
-
-  .down {
-    transform: translateY(30%);
-  }
-</style>
-
-
-=======
->>>>>>> 6b1f4203db3ba11dd382c94002bb2ce4ffb77414
 <div class="down">
   <div class="container-fluid " >
     <div class="row">
       <div class="col-sm-4"></div>
-<<<<<<< HEAD
-        <div id ="rcorners" class="col-sm-4" style="background-color:white"style="top:50">
-=======
         <div id ="rcorners" class="col-sm-4">
->>>>>>> 6b1f4203db3ba11dd382c94002bb2ce4ffb77414
           <form method="POST">
             {% csrf_token %}
               <br>
@@ -34,25 +16,30 @@
               </div>
 
               <div class="form-label-group">
-                
+                {{form.username.help_text}}
                 <input type="text" name="username" class="form-control" placeholder="Username">
-                
+                {{form.username.errors}}
               </div>
               <br>
               <div class="form-label-group">
-                
+                {{form.email.help_text}}
                 <input type="email" name="email" class="form-control" placeholder="email">
-                
+                {{form.email.errors}}
               </div>
               <br>
               <div class="form-label-group">
-
-                <input type="password" name="password" class="form-control" placeholder="Password" >
-
+                {{form.password1.help_text}}
+                <input type="password" name="password1" class="form-control" placeholder="Password" >
+                {{form.password1.errors}}
+              </div>
+              <br>
+              <div class="form-label-group">
+                {{form.password2.help_text}}
+                <input type="password" name="password2" class="form-control" placeholder="Password" >
+                {{form.password2.errors}}
               </div>
               <br>
               <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Create Account</button>
-              <br>
               <br>
           </form>
         </div>

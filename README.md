@@ -16,3 +16,8 @@ profile = UserProfile(user=user)
 profile.save()
 ```
 7. finish
+
+
+# Todo
+1. profile card
+2. 
