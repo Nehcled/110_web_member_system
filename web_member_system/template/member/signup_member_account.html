@@ -16,28 +16,27 @@
               </div>
 
               <div class="form-label-group">
-                {{form.username.help_text}}
                 <input type="text" name="username" class="form-control" placeholder="Username">
-                {{form.username.errors}}
+                <label class="help">{{form.username.help_text}}</label>
+                <label class="error">{{form.username.errors}}</label>
               </div>
               <br>
               <div class="form-label-group">
                 {{form.email.help_text}}
                 <input type="email" name="email" class="form-control" placeholder="email">
-                {{form.email.errors}}
+                <label class="error">{{form.email.errors}}</label>
               </div>
               <br>
               <div class="form-label-group">
-                {{form.password1.help_text}}
                 <input type="password" name="password1" class="form-control" placeholder="Password" >
-                {{form.password1.errors}}
+                <label class="error">{{form.password1.errors}}</label>
               </div>
               <br>
               <div class="form-label-group">
-                {{form.password2.help_text}}
-                <input type="password" name="password2" class="form-control" placeholder="Password" >
-                {{form.password2.errors}}
+                <input type="password" name="password2" class="form-control" placeholder="Please enter password again" >
+                <label class="error">{{form.password2.errors}}</label>
               </div>
+              <label class="help">{{form.password1.help_text}}</label>
               <br>
               <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Create Account</button>
               <br>
