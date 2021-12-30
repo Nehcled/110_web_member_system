@@ -14,3 +14,16 @@
 .help{
     font-size:10px;
 }
+.textarea_lock{
+    resize:none;
+}
+.p_frame{
+    border-style: solid;
+    border-color: #000;
+    border-width: 2px;
+}
+.head-shot{
+    border-style: solid;
+    border-color: #e0e0e0;
+    border-width: 2px;
+}

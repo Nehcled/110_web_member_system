@@ -37,15 +37,15 @@
                             
                             <br>
                             <div>
-                                <h3>Skill</h3><p>{{ profile.userprofile.skill }}</p>
+                                <h5>Skill</h5><p class="p_frame">{{ profile.userprofile.skill }}</p>
                             </div>
                             <br>
                             <div>
-                                <h3>Experence</h3><p>{{ profile.userprofile.experience }}</p>
+                                <h5>Experence</h5><p class="p_frame">{{ profile.userprofile.experience }}</p>
                             </div>
                             <br>
                             <div>
-                                <h3>Job</h3><p>{{ profile.userprofile.job }}</p>
+                                <h5>Job</h5><p class="p_frame">{{ profile.userprofile.job }}</p>
                             </div>
                             <br>
                         </form>
@@ -65,19 +65,21 @@
                                         <img class="head-shot" src="{% static head_shot %}" width=180>
                                     {% endwith %}
                                 {% endif %}
-                                <br>
-                                ID:{{profile.id}}
-                                <br>
-                                Level:{{ profile.userprofile.member_level}}
-                                <br>
-                                Exp:{{ profile.userprofile.member_exp}}
-                                <br>
-                                <a href="{% url 'profile-update' %}?next={% url 'profile' %}">Edit Profile</a>
-                                <br>
-                                <a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">Update Profile Photo</a>
-                                <br>
-                                <a href="{% url 'password-change' %}?next={% url 'profile' %}">Password Change</a>
-                                <br>
+                                <div>
+                                    <br>
+                                    ID:{{profile.id}}
+                                    <br>
+                                    Level:{{ profile.userprofile.member_level}}
+                                    <br>
+                                    Exp:{{ profile.userprofile.member_exp}}/100
+                                    <br>
+                                    <a href="{% url 'profile-update' %}?next={% url 'profile' %}">Edit Profile</a>
+                                    <br>
+                                    <a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">Update Profile Photo</a>
+                                    <br>
+                                    <a href="{% url 'password-change' %}?next={% url 'profile' %}">Password Change</a>
+                                    <br>
+                                </div>
                             </div>
                             </center>
                         </form>
