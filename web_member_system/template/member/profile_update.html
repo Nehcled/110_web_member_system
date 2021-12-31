@@ -5,38 +5,41 @@
 <div class="down">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4"></div>
-        <div id ="rcorners" class="col-sm-4">
+      <div class="col-sm-3"></div>
+        <div id ="rcorners" class="col-sm-6">
           <form method="post">{% csrf_token %}               
             <br>
-            <center>
-                <h2>Edit Profile</h2>
+                <center>
+                  <h2>Edit Profile</h2>
+                </center>
                 <div class="form-label-group">
                   Cellphone
-                  <textarea rows="1" cols="10" name="cel" class="form-control" required>{{form.cel.value}}</textarea>
+                  <textarea rows="1" cols="10" name="cel" class="form-control textarea_lock" required>{{form.cel.value}}</textarea>
                 </div>
                 <br>
                 <div class="form-label-group">
                   Telephone
-                  <textarea rows="1" cols="10" name="tel" class="form-control" required>{{form.tel.value}}</textarea>
+                  <textarea rows="1" cols="10" name="tel" class="form-control textarea_lock" required>{{form.tel.value}}</textarea>
                 </div>
                 <br>
                 <div class="form-label-group">
                   Skill
-                  <textarea rows="4" cols="20" name="skill" class="form-control" required>{{form.skill.value}}</textarea>
+                  <textarea rows="4" cols="20" name="skill" class="form-control textarea_lock" required>{{form.skill.value}}</textarea>
                 </div>
                 <br>
                 <div class="form-label-group">
                   Experence
-                  <textarea rows="4" cols="10" name="experience" class="form-control" required>{{form.experience.value}}</textarea>
+                  <textarea rows="4" cols="10" name="experience" class="form-control textarea_lock" required>{{form.experience.value}}</textarea>
                 </div>
                 <br>
                 <div class="form-label-group">
                   Job
-                  <textarea rows="4" cols="10" name="job" class="form-control" required>{{form.job.value}}</textarea>
+                  <textarea rows="4" cols="10" name="job" class="form-control textarea_lock" required>{{form.job.value}}</textarea>
                 </div>
                 <br>
-                <input type="submit" value="Submit">
+                <center>
+                  <input type="submit" value="Submit">
+                </center>
                 
                 
                 <!--
@@ -48,11 +51,10 @@
                 <br>
                 <input type="submit" value="Submit">
                 -->
-            </center>
             <br>
           </form>
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-3"></div>
     </div>
   </div>
 </div>

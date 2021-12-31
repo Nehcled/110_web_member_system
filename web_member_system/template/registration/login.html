@@ -2,33 +2,11 @@
 
 {% block content %}
 
-<<<<<<< HEAD
-<style>
-  #rcorners {
-    border-radius: 1em/1em;
-  }
-
-  .down {
-    transform: translateY(30%);
-  }
-
-  .error{
-    text-align:center;
-    color:red;
-  }
-</style>
-
-=======
->>>>>>> 6b1f4203db3ba11dd382c94002bb2ce4ffb77414
 <div class="down">
   <div class="container-fluid " >
     <div class="row">
       <div class="col-sm-4"></div>
-<<<<<<< HEAD
-        <div id ="rcorners" class="col-sm-4" style="background-color:white"style="top:50">
-=======
         <div id ="rcorners" class="col-sm-4">
->>>>>>> 6b1f4203db3ba11dd382c94002bb2ce4ffb77414
           
           <form method="POST">
             {% csrf_token %}
@@ -48,9 +26,9 @@
                 <input type="password" name="password" class="form-control" placeholder="Password" >
               </div>
               <br>
-              <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Sign in</button>
+              <button class="btn btn-lg btn-primary btn-block" type="submit" value="login">Log in</button>
               <input type="hidden" name="next" value="{{ next }}" />
-              <a href="{% url 'password_reset' %}">Lost password?</a>
+              <a href="{% url 'password_reset' %}">Forget password?</a>
               <br>
               <div class="error">
                 {% if form.errors %}
@@ -61,8 +39,6 @@
                 {% if user.is_authenticated %}
                   <p>Your account doesn't have access to this page. To proceed,
                   please login with an account that has access.</p>
-                {% else %}
-                  <p>Please login to see this page.</p>
                 {% endif %}
                 {% endif %}
               </div>

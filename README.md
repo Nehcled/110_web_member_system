@@ -19,3 +19,7 @@ profile.save()
 
 # Install
 pip install django-filter
+
+# Todo
+1. profile card
+2. 
