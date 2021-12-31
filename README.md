@@ -16,3 +16,6 @@ profile = UserProfile(user=user)
 profile.save()
 ```
 7. finish
+
+# Install
+pip install django-filter

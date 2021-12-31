@@ -1,11 +1,13 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.signals import user_logged_in
+from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect, request
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 
 from .models import UserProfile, UserProfileCard
 from .forms import RegisterUserForm, UserProfileForm, UserProfilePhotoForm
@@ -15,6 +17,8 @@ import os
 from PIL import Image, ImageDraw, ImageFont
 from re import template
 
+from .filters import UserFilter
+from django.contrib import messages
 # Create your views here.class
 def register(request):
     if request.method == 'POST':
@@ -147,3 +151,17 @@ class LevelReward:
         return self.LEVLE_NAME[2]
     def enable(self):
         pass
+
+
+def index_search(request):
+    user = User.objects.all()
+    userFilter = UserFilter(queryset=user)
+
+    if request.method == "POST":
+        userFilter = UserFilter(request.POST, queryset=user)
+
+    context = {
+        'userFilter':userFilter  
+    }
+    return render(request, 'search.html', context)
+

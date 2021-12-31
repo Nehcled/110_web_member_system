@@ -105,6 +105,7 @@ celerybeat.pid
 .env
 .venv
 member-system-venv/
+110_web_member_system
 env/
 venv/
 ENV/
