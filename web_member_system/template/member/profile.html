@@ -6,7 +6,6 @@
   p{
       font-size:18px;
   }
-
 </style>
 
 <div class=down>
@@ -50,13 +49,13 @@
                             <br>
                         </form>
                     </div>
-                    
                     <div class="col-sm-5">
                         <form method="POST">
-                            <center>
+                            
                             <br>
                             <br>
                             <div>
+                                <center>
                                 {% if profile.userprofile.profile_photo %}
                                     <img class="head-shot" src = "/media/{{ profile.userprofile.profile_photo }}" width=180>    
                                 {% else %}
@@ -65,23 +64,30 @@
                                         <img class="head-shot" src="{% static head_shot %}" width=180>
                                     {% endwith %}
                                 {% endif %}
+                                
                                 <div>
                                     <br>
                                     ID:{{profile.id}}
                                     <br>
                                     Level:{{ profile.userprofile.member_level}}
                                     <br>
-                                    Exp:{{ profile.userprofile.member_exp}}/100
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Exp:{{ profile.userprofile.member_exp}}/100</div>
+                                    </div>
+                                    
                                     <br>
+                                    
                                     <a href="{% url 'profile-update' %}?next={% url 'profile' %}">Edit Profile</a>
                                     <br>
                                     <a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">Update Profile Photo</a>
                                     <br>
                                     <a href="{% url 'password-change' %}?next={% url 'profile' %}">Password Change</a>
+                                    
                                     <br>
                                 </div>
+                                </center>
                             </div>
-                            </center>
+                            
                         </form>
                     </div>
                 </div>
