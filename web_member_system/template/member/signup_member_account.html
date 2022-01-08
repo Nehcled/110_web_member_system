@@ -7,40 +7,39 @@
     <div class="row">
       <div class="col-sm-4"></div>
         <div id ="rcorners" class="col-sm-4">
-          <form method="POST">
-            {% csrf_token %}
-              <br>
-              <div class="text-center mb-4">
-                <img class="mb-4" src="/static/images/logo.png" alt="" width="auto" height="100">
-                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-              </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="text-center mb-4">
+                    <img src="/static/images/logo.png" alt="" width="auto" height="40">
+                    <div class="topic">Register</div>
+                </div>
 
-              <div class="form-label-group">
-                <input type="text" name="username" class="form-control" placeholder="Username">
-                <label class="help">{{form.username.help_text}}</label>
-                <label class="error">{{form.username.errors}}</label>
-              </div>
-              <br>
-              <div class="form-label-group">
-                {{form.email.help_text}}
-                <input type="email" name="email" class="form-control" placeholder="email">
-                <label class="error">{{form.email.errors}}</label>
-              </div>
-              <br>
-              <div class="form-label-group">
-                <input type="password" name="password1" class="form-control" placeholder="Password" >
-                <label class="error">{{form.password1.errors}}</label>
-              </div>
-              <br>
-              <div class="form-label-group">
-                <input type="password" name="password2" class="form-control" placeholder="Please enter password again" >
-                <label class="error">{{form.password2.errors}}</label>
-              </div>
-              <label class="help">{{form.password1.help_text}}</label>
-              <br>
-              <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Create Account</button>
-              <br>
-          </form>
+                <div class="form-label-group">
+                    <input type="text" name="username" class="form-control" placeholder="Username">
+                    <label class="help">{{form.username.help_text}}</label>
+                    <label class="error">{{form.username.errors}}</label>
+                </div>
+                <br>
+                <div class="form-label-group">
+                    {{form.email.help_text}}
+                    <input type="email" name="email" class="form-control" placeholder="email">
+                    <label class="error">{{form.email.errors}}</label>
+                </div>
+                <br>
+                <div class="form-label-group">
+                    <input type="password" name="password1" class="form-control" placeholder="Password" >
+                    <label class="error">{{form.password1.errors}}</label>
+                </div>
+                <br>
+                <div class="form-label-group">
+                    <input type="password" name="password2" class="form-control" placeholder="Please enter password again" >
+                    <label class="error">{{form.password2.errors}}</label>
+                </div>
+                <label class="help">{{form.password1.help_text}}</label>
+                <br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Create Account</button>
+                <br>
+            </form>
         </div>
         <div class="col-sm-4"></div>
       </div>

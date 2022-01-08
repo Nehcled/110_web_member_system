@@ -7,11 +7,12 @@
     <div class="row">
       <div class="col-sm-4"></div>
         <div id ="rcorners" class="col-sm-4">
+            <div class="center">
+              <img src="/static/images/logo.png" alt="" width="auto" height="40px">
+              <div class="topic">Update Profile Photo</div class="topic">
+            </div>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="center">
-                  <h1>Update Profile Photo</h1>
-                </div>
                 <div class="center">
                   <div style="display: inline-block;">
                       <input type="file" name="profile_photo" accept="image/*" id="id_profile_photo" onchange="showFileName()" class="hidden">

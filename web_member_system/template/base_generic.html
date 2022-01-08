@@ -16,7 +16,8 @@
     <div class="background">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="{% url 'index' %}">
-                <img src="/static/images/logo.png" width="auto" height="40" alt=""> Software Engineering Association Taiwan
+                <img src="/static/images/logo.png" width="auto" height="40" alt="">
+                <div style="display: inline-block;">Software Engineering Association Taiwan</div>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,7 +39,7 @@
                   <a class="nav-link" href="{% url 'login' %}?next={% url 'index' %}">Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'signup' %}?next={% url 'signup-successful' %}">Sign Up</a>
+                  <a class="nav-link" href="{% url 'signup' %}?next={% url 'signup-successful' %}">Register</a>
                 </li>
               {% endif %}
               
