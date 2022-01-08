@@ -10,19 +10,20 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <br>
-                <center>
-                <h2>Update Profile Photo</h2>
-                <br>
-
-
-                <table>
-                    {{ form.as_table }}
-                </table>
                 
-                <br>
-                <input type="submit" value="Submit">
+                <div class="center">
+                  <h2>Update Profile Photo</h2>
+                  <br>
 
-                </center>
+
+                  <table>
+                      {{ form.as_table }}
+                  </table>
+                  
+                  <br>
+                  <input type="submit" value="Submit">
+                </div>
+                
                 <br>
             </form>
         </div>

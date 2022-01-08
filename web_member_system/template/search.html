@@ -22,7 +22,8 @@
                 
                 <input type="text" name="userprofile__job" class="form-control" id="id_userprofile__job" placeholder="Job">
                 <br/>
-                <button type="submit" class="btn btn-lg btn-primary btn-block"  onclick="out()" >Search</button>
+                <input type="button" class="btn btn-lg btn-primary btn-block"  onclick="out()" value="Search">
+                
             </form>
             
             <div id="output">
@@ -36,29 +37,37 @@
   </div>
 
 <script>
-    var r="<p>{{user.username}}</p><p>{{user.userprofile.skill}}</p><p>{{user.userprofile.job}}</p>";
-            
+    var r="";
     function out() {
-        document.getElementById("output").innerHTML = r;
+        //r="{% for user in userFilter.qs %}<p>{{user.username}}</p><p>{{user.userprofile.skill}}</p><p>{{user.userprofile.job}}</p>{% endfor %}";
+        document.getElementById("output").innerHTML=r;
+    }
+    function win() {
+        
     }
 </script>
-<!--
+
 <form role="search" method='POST' id='searchform' style="color:white">
     {% csrf_token %} user : {{userFilter.form.username}}<br/> skill : {{userFilter.form.userprofile__skill}}<br/> job : {{userFilter.form.userprofile__job}}<br/>
     <input type="submit" class="btn btn-primary" value="search" />
 </form>
-
-
+<!--
+{% for user in userFilter.qs %}
+<p style="color:white">{{user.username}}</p>
+<p style="color:white">{{user.userprofile.skill}}</p>
+<p style="color:white">{{user.userprofile.job}}</p>
+{% endfor %}-->
+<!--
 {% comment %} {%for user in userFilter.qs %} {% endcomment %}
 
-{% for user in userFilter.qs %}
+
 {% comment %} {% if userprofile%} {% endcomment %}
 <p style="color:white">{{user.username}}</p>
 <p style="color:white">{{user.userprofile.skill}}</p>
 <p style="color:white">{{user.userprofile.job}}</p>
 {% comment %} {% endif %} {% endcomment %}
 </br>
-{% endfor %}
+
 
 {% comment %} {%endfor%}  {% endcomment %}
 -->
