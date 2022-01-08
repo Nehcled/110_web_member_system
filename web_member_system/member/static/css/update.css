@@ -1,0 +1,9 @@
+textarea{
+    resize: none;
+}
+.form-data{
+    padding: 0 20px;
+}
+.form-label-group{
+    margin-bottom: 10px;
+}
