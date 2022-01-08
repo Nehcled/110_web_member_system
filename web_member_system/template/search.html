@@ -15,19 +15,24 @@
             <form role="search" method='POST' id='searchform'>
                 {% csrf_token %}
                 <input type="text" name="username" class="form-control" id="id_username" placeholder="User">
-                <br/>
-                
+                <br>
                 <input type="text" name="userprofile__skill" class="form-control" id="id_userprofile__skill" placeholder="Skill">
-                <br/>
-                
+                <br>
                 <input type="text" name="userprofile__job" class="form-control" id="id_userprofile__job" placeholder="Job">
-                <br/>
-                <input type="button" class="btn btn-lg btn-primary btn-block"  onclick="out()" value="Search">
+                <br>
+                <div>
+                    <input type="submit" class="button fill" value="Search">
+                </div>
                 
             </form>
             
-            <div id="output">
-
+            <div id="result">
+                {% for user in userFilter.qs %}
+                    <p>{{user.username}}</p>
+                    <p>{{user.userprofile.skill}}</p>
+                    <p>{{user.userprofile.job}}</p>
+                    <hr>
+                {% endfor %}
             </div>
             
         </div>
@@ -36,6 +41,7 @@
     </div>
   </div>
 
+<!--
 <script>
     var r="";
     function out() {
@@ -46,26 +52,21 @@
         
     }
 </script>
-
-<form role="search" method='POST' id='searchform' style="color:white">
-    {% csrf_token %} user : {{userFilter.form.username}}<br/> skill : {{userFilter.form.userprofile__skill}}<br/> job : {{userFilter.form.userprofile__job}}<br/>
-    <input type="submit" class="btn btn-primary" value="search" />
-</form>
-
-<!--
-{% comment %} {%for user in userFilter.qs %} {% endcomment %}
-{% for user in userFilter.qs %}
-{% comment %} {% if userprofile%} {% endcomment %}
-<p style="color:white">{{user.username}}</p>
-<p style="color:white">{{user.userprofile.skill}}</p>
-<p style="color:white">{{user.userprofile.job}}</p>
-{% comment %} {% endif %} {% endcomment %}
-</br>
-{% endfor %}
-
-{% comment %} {%endfor%}  {% endcomment %}
 -->
 
+<!--
+<br><br>
+<form role="search" method='POST' id='searchform' style="color:white">
+    {% csrf_token %}
+    user : {{userFilter.form.username}}
+    <br>
+    skill : {{userFilter.form.userprofile__skill}}
+    <br>
+    job : {{userFilter.form.userprofile__job}}
+    <br>
+    <input type="submit" class="btn btn-primary" value="search">
+</form>
+-->
 
 
 

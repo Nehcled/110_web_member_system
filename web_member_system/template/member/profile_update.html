@@ -1,8 +1,6 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/update' %}.css">
 <div class="down">
 <div class="container-fluid">
     <div class="row">
@@ -37,8 +35,8 @@
                     </div>
                 </div>
                 <div class="center">
-                    <button type="submit">儲 存</button>
-                    <button type="button" onclick="goBackPage()">取 消</button>
+                    <button type="submit" class="button two-buttons-fill">儲 存</button>
+                    <button type="button" onclick="goBackPage()" class="button two-buttons-fill">取 消</button>
                 </div>
             </form>
         </div>

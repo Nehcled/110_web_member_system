@@ -10,10 +10,10 @@
         <form class="form-signin" method="POST">
           {% csrf_token %}
             <br>
-            <div class="text-center mb-4">
+            <div class="center">
               <img class="mb-4" src="/static/images/logo.png" alt="" width="auto" height="70">
-              <h1 class="h3 mb-3 font-weight-normal">The account registered successful!</h1>
-              <p><a href="{% url 'index' %}">return to home page</a></p>
+              <div class="topic">Register Successful!</div>
+              <p class="title"><a href="{% url 'index' %}">Return to home page.</a></p>
             </div>
         </form>
       </div>

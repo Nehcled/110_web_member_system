@@ -15,18 +15,21 @@
                 {% csrf_token %}
                 <div class="center">
                   <div style="display: inline-block;">
-                      <input type="file" name="profile_photo" accept="image/*" id="id_profile_photo" onchange="showFileName()" class="hidden">
-                      <button type="button" id="file-selector" class="button" onclick="selectFile()">選擇檔案</button>
-                      <br>
-                      <p id="file-name"></p>
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" name="profile_photo-clear" id="profile_photo-clear_id">
-                        <label class="custom-control-label" for="profile_photo-clear_id">Clear Profile Photo</label>
-                      </div>
+                        <input type="file" name="profile_photo" accept="image/*" id="id_profile_photo" onchange="showFileName()" class="hidden">
+                        <button type="button" id="file-selector" class="button" onclick="selectFile()">Browse</button>
+                        <br>
+                        <div id="file-name">Not Selected</div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" name="profile_photo-clear" id="profile_photo-clear_id">
+                            <label class="custom-control-label" for="profile_photo-clear_id">Default Photo</label>
+                        </div>
                   </div>
+                </div>
+                <br>
+                <br>
                 <div class="center">
-                  <button type="submit" class="button">儲 存</button>
-                  <button type="button" class="button" onclick="goBackPage()">取 消</button>
+                  <button type="submit" class="button two-buttons-fill">Save</button>
+                  <button type="button" class="button two-buttons-fill" onclick="goBackPage()">Cancel</button>
                 </div>
             </form>
         </div>

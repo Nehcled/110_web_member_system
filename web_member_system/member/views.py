@@ -156,12 +156,11 @@ user_logged_in.connect(increaseExp)
 def index_search(request):
     user = User.objects.all()
     userFilter = UserFilter(queryset=user)
-
     if request.method == "POST":
         userFilter = UserFilter(request.POST, queryset=user)
 
     context = {
-        'userFilter':userFilter  
+        'userFilter' : userFilter
     }
     return render(request, 'search.html', context)
 

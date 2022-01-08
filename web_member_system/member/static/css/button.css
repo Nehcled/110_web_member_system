@@ -1,0 +1,96 @@
+#file-selector {
+    align-items: center;
+    appearance: none;
+    background-color: #3EB2FD;
+    background-image: linear-gradient(1deg, #353ffd, #37afff 90%);
+    background-size: calc(100% + 20px) calc(100% + 20px);
+    border-radius: 100px;
+    border: #ffffff00 1px solid;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: CircularStd,sans-serif;
+    font-size: 1rem;
+    height: auto;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 6px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .2s,background-position .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 120px;
+}
+#file-selector:active, #file-selector:focus {
+    outline: none;
+}
+#file-selector:hover {
+    background-position: -20px -20px;
+    border: #001d9e 1px solid;
+}
+#file-selector:focus:not(:active) {
+    box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}
+
+  
+  
+.button {
+    align-items: center;
+    background-color: rgba(77, 157, 248, 0.185);
+    background-position: 0 0;
+    border: 1px solid #83b7f3;
+    border-radius: 11px;
+    box-sizing: border-box;
+    color: #254af0;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 33.4929px;
+    list-style: outside url(https://www.smashingmagazine.com/images/bullet.svg) none;
+    padding: 2px 12px;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: none;
+    text-underline-offset: 1px;
+    transition: border .2s ease-in-out,box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    word-break: break-word;
+    width: 80px;
+    text-align: center;
+}
+.button:active, .button:hover, .button:focus {
+    outline: 0;
+}
+.button:active {
+    background-color: #254af0;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: #FFFFFF;
+}
+.button:hover {
+    background-color: rgba(77, 157, 248, 0.219);
+    border-color: #2149fa;
+  
+}
+.button:active:hover, .button:focus:hover, .button:focus {
+    background-color: #254af0;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+    color: #FFFFFF;
+}
+
+.fill{
+    width: 100%;
+}
+.two-buttons-fill{
+    margin: 0 10%;
+}

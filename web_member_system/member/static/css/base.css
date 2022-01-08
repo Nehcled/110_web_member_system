@@ -58,3 +58,11 @@
     font-size: 50px;
     margin-bottom: 20px;
 }
+.welcome{
+    color: #ffffff;
+    font-size: 64pt;
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: Lato, sans-serif;
+    margin-top: 230px;
+}
