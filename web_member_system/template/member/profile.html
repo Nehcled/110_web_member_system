@@ -1,11 +1,20 @@
 {% extends "base_generic.html" %}
-
+{% load get_reward %}
 {% block content %}
-        
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile' %}.css">
 <style>
-  p{
-      font-size:18px;
-  }
+    .progress{
+        background-color: #b0b0b0;
+        height: 30px;
+        width: 180px;
+        }
+    .progress-bar{
+        padding-left: 5px;
+        background-color: #0077ff9d;
+        width: {{profile.userprofile.member_exp}}%;
+    }
 </style>
 
 <div class=down>
@@ -15,80 +24,87 @@
         <div id ="rcorners" class="col-sm-6">
             <div class="container-fluid " >
                 <div class="row">
-                    <div class="col-sm-7" class="font">
-                        <form method="POST">
-                            <br>
-                            <div>
-                                <h5>Username</h5><p class="p_info_text">{{ profile.get_username }}</p>
-                            </div>
-                            <br>
-                            <div>
-                                <h5>Email</h5><p class="p_info_text">{{ profile.email }}</p>
-                            </div>
-                            <br>
-                            <div>
-                                <h5>Cellphone</h5><p class="p_info_text">{{ profile.userprofile.cel }}</p>
-                            </div>
-                            <br>
-                            <div>
-                                <h5>Telephone</h5><p class="p_info_text">{{ profile.userprofile.tel }}</p>
-                            </div>
-                            
-                            <br>
-                            <div>
-                                <h5>Skill</h5><p class="p_frame p_info_text">{{ profile.userprofile.skill }}</p>
-                            </div>
-                            <br>
-                            <div>
-                                <h5>Experence</h5><p class="p_frame p_info_text">{{ profile.userprofile.experience }}</p>
-                            </div>
-                            <br>
-                            <div>
-                                <h5>Job</h5><p class="p_frame p_info_text">{{ profile.userprofile.job }}</p>
-                            </div>
-                            <br>
-                        </form>
+                    <div class="col-sm-7 profile-left" class="font">
+                        <div>
+                            <div class="title">Username</div>
+                            <p class="info-text">{{ profile.get_username }}</p>
+                        </div>
+                        <div>
+                            <div class="title">Email</div>
+                            <p class="info-text">{{ profile.email }}</p>
+                        </div>
+                        <div>
+                            <div class="title">Cellphone</div>
+                            <p class="info-text">{{ profile.userprofile.cel }}</p>
+                        </div>
+                        <div>
+                            <div class="title">Telephone</div>
+                            <p class="info-text">{{ profile.userprofile.tel }}</p>
+                        </div>
                     </div>
-                    <div class="col-sm-5">
-                        <form method="POST">
-                            
-                            <br>
-                            <br>
+                    <div class="col-sm-5 profile-right">
+                        <div>
+                            {% if profile.userprofile.profile_photo %}
+                                <img class="head-shot" src = "/media/{{ profile.userprofile.profile_photo }}" width=180>    
+                            {% else %}
+                                {% with 'head_shot/'|add:profile.userprofile.head_shot as head_shot %}
+                                    <img class="head-shot" src="{% static head_shot %}" width=180>
+                                {% endwith %}
+                            {% endif %}
+                        </div>
+                        <div class="member-level">
                             <div>
-                                <center>
-                                {% if profile.userprofile.profile_photo %}
-                                    <img class="head-shot" src = "/media/{{ profile.userprofile.profile_photo }}" width=180>    
-                                {% else %}
-                                    {% load static %}
-                                    {% with 'head_shot/'|add:profile.userprofile.head_shot as head_shot %}
-                                        <img class="head-shot" src="{% static head_shot %}" width=180>
-                                    {% endwith %}
-                                {% endif %}
-                                
-                                <div>
-                                    <br>
-                                    ID:{{profile.id}}
-                                    <br>
-                                    Level:{{ profile.userprofile.member_level}}
-                                    <br>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Exp:{{ profile.userprofile.member_exp}}/100</div>
-                                    </div>
-                                    
-                                    <br>
-                                    
-                                    <a href="{% url 'profile-update' %}?next={% url 'profile' %}">Edit Profile</a>
-                                    <br>
-                                    <a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">Update Profile Photo</a>
-                                    <br>
-                                    <a href="{% url 'password-change' %}?next={% url 'profile' %}">Password Change</a>
-                                    
-                                    <br>
-                                </div>
-                                </center>
+                                <span class="title">
+                                    ID : 
+                                </span>
+                                {{profile.id}}
                             </div>
-                            
-                        </form>
+                            <div>
+                                <span class="title">
+                                    Level : 
+                                </span>
+                                {{ profile.userprofile.member_level}}
+                                {% with 'badge'|get_reward:profile.userprofile.member_level as badge %}
+                                    {% with 'images/reward/'|add:badge|add:'.png' as badgePath %}
+                                    <img src="{% static badgePath %}" alt="badge" title="{{ badge }}" height="50px" width="50px" style="margin-left: 10px;">
+                                    {% endwith %}
+                                {% endwith %}
+                            </div>
+
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                Exp:{{ profile.userprofile.member_exp}}/100
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 profile-bottom">
+                        <div>
+                            <div class="title">Skill</div>
+                            <p class="description info-text">{{ profile.userprofile.skill }}</p>
+                        </div>
+                        <div>
+                            <div class="title">Experence</div>
+                            <p class="description info-text">{{ profile.userprofile.experience }}</p>
+                        </div>
+                        <div>
+                            <div class="title">Job</div>
+                            <p class="description info-text">{{ profile.userprofile.job }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="functions">
+                            {% with 'pdf_profile/'|add:profile.get_username|add:'.pdf' as pdf_profile %}
+                            <a href="{% static pdf_profile %}" target="_blank">會員卡</a>
+                            {% endwith %}
+                            <a href="{% url 'profile-update' %}?next={% url 'profile' %}">編輯資料</a>
+                            <a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">上傳頭像</a>
+                            <a href="{% url 'password-change' %}?next={% url 'profile' %}">密碼變更</a>
+                        </div>
                     </div>
                 </div>
             </div>

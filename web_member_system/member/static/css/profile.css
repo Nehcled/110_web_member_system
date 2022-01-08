@@ -1,0 +1,35 @@
+.profile-left, .profile-right{
+    margin-top: 50px
+}
+.title{
+    font-size: 17px;
+    color: #1467c7;
+}
+.info-text{
+    font-size: 27px;
+}
+.head-shot{
+    border: 2px #e0e0e0 solid;
+    padding: 10px
+}
+.member-level{
+    margin-top: 20px;
+    font-size: 20px;
+}
+.description{
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+.functions{
+    margin-top: 20px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.functions > a{
+    display: inline-block;
+    margin: 5px 5% 0;
+    font-weight: bold;
+}

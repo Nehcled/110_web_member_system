@@ -101,71 +101,56 @@ class Card:
     def __init__(self, sender, user, request, **kwargs):
         self.user = user.get_username()
         self.id = user.id
-        self.head_shot_path = user.userprofile.head_shot
+        self.headShotPath = user.userprofile.head_shot
         #self.exp = user.expiration_date
-        self.exp = "21/12/19"  # Need to add "expiration date" in database.
+        self.exp = "25/01/01"  # Need to add "expiration date" in database.
         self.img = ""
-        self.create_image()
-        self.create_pdf()
+        self.createImage()
+        self.createPdf()
 
-    def create_image(self):
-        def generate_font_family(font_family, size):
+    def createImage(self):
+        def generateFontFamily(font_family, size):
             return ImageFont.truetype(FONT_FAMILY_PATH[font_family], size=size, encoding="utf-8")
 
-        def draw_text(draw, pos, text, font_size, font_family="Microsoft JhengHei Bold", font_color='rgb(0, 0, 0)'):
-            draw.text(pos, text, fill=font_color, font=generate_font_family(font_family, font_size))
+        def drawText(draw, pos, text, font_size, font_family="Microsoft JhengHei Bold", font_color='rgb(0, 0, 0)'):
+            draw.text(pos, text, fill=font_color, font=generateFontFamily(font_family, font_size))
 
         FONT_FAMILY_PATH = {
             "Microsoft JhengHei Bold" : f"{CURRENT_DIRRECT}/static/font_family/Microsoft JhengHei/msjhbd.ttf",
         }
         self.img = Image.open(f"{CURRENT_DIRRECT}/static/pdf_profile/template.png")
-        head_shot = Image.open(f"{CURRENT_DIRRECT}/static/head_shot/{self.head_shot_path}").resize((155, 155), Image.ANTIALIAS)
+        head_shot = Image.open(f"{CURRENT_DIRRECT}/static/head_shot/{self.headShotPath}").resize((155, 155), Image.ANTIALIAS)
         self.img.paste(head_shot, (50, 77))
         draw = ImageDraw.Draw(self.img)
         user_id = str(self.id).zfill(8)
         user_id = user_id[0:4] + " " + user_id[4:]
 
-        draw_text(draw, (232, 103), self.user, 50)
-        draw_text(draw, (232, 183), user_id, 35)
-        draw_text(draw, (386, 266), self.exp, 20)
+        drawText(draw, (232, 103), self.user, 50)
+        drawText(draw, (232, 183), user_id, 35)
+        drawText(draw, (386, 266), self.exp, 20)
 
-    def create_pdf(self):
+    def createPdf(self):
         self.img.save(f"{CURRENT_DIRRECT}/static/pdf_profile/{self.user}.pdf")
 
 user_logged_in.connect(Card)
 
 def increaseExp(sender, user, request, **kwargs):
-    def can_increase(t1, t2):
-        t1_d = t1.strftime("%d")
-        t2_d = t2.strftime("%d") if t2 != None else -1
-        return t1_d!=t2_d
-    last_login_time = user.userprofile.last_login_time
-    now_time = user.last_login.utcnow().replace(tzinfo=timezone.utc).astimezone(tz=None)
+    def sameDay(t1, t2):
+        day1 = t1.strftime("%d")
+        day2 = t2.strftime("%d") if t2 != None else -1
+        return day1 == day2
+    lastLoginTime = user.userprofile.last_login_time
+    nowTime = user.last_login.utcnow().replace(tzinfo=timezone.utc).astimezone(tz=None)
     target = UserProfile.objects.filter(user=user.id)[0]
-    if can_increase(now_time, last_login_time):
-        target.member_exp += 1
-        if target.member_exp >= 100:
-            target.member_level += 1
+    if not sameDay(nowTime, lastLoginTime):
+        target.member_exp += 35
+        target.member_level += target.member_exp // 100
         target.member_exp %= 100
-    target.last_login_time = now_time
+    target.last_login_time = nowTime
     target.save()
 
 user_logged_in.connect(increaseExp)
 
-
-# Not finished
-class LevelReward:
-    def __init__(self, level):
-        self.LEVLE_NAME = ["Basic", "Intermediate", "Advanced"]
-        self.level = self.get_level(level)
-    def get_level(self, level):
-        if 20 >= level >= 1:
-            return self.LEVLE_NAME[0]
-        if 40 >= level >= 21:
-            return self.LEVLE_NAME[1]
-        return self.LEVLE_NAME[2]
-    def enable(self):
-        pass
 
 
 def index_search(request):
