@@ -155,9 +155,14 @@ user_logged_in.connect(increaseExp)
 
 def index_search(request):
     user = User.objects.all()
-    userFilter = UserFilter(queryset=user)
+    empty = UserFilter(request.POST, queryset=User.objects.filter(username=None))
+
     if request.method == "POST":
         userFilter = UserFilter(request.POST, queryset=user)
+        if userFilter.data.get("username") == "":
+            userFilter = empty
+    else:
+        userFilter = empty
 
     context = {
         'userFilter' : userFilter
