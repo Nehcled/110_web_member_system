@@ -13,7 +13,15 @@
                   <h1>Update Profile Photo</h1>
                 </div>
                 <div>
-                  {{ form.as_table }}
+                  <div>
+                      <br>
+                      Update:
+                      <input type="file" name="profile_photo" accept="image/*" id="id_profile_photo">
+                      <br>
+                      <br>
+                      <input type="checkbox" name="profile_photo-clear" id="profile_photo-clear_id">
+                      <label for="profile_photo-clear_id">Clear Profile Photo</label>
+                  </div>
                 </div>
                 <div class="center">
                   <button type="submit">儲 存</button>
@@ -27,13 +35,4 @@
 </div>
 
 
-<!--
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit">
-</form>
--->
 {% endblock %}
