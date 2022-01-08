@@ -1,6 +1,48 @@
 {% extends 'base_generic.html' %} 
 {% block content %}
 
+
+<div class="down">
+    <div class="container-fluid " >
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div id ="rcorners" class="col-sm-4">
+            <br>
+            <div class="text-center mb-4">
+                <img class="mb-4" src="/static/images/logo.png" alt="" width="auto" height="70">
+                <h1>Search</h1>
+            </div>
+            <form role="search" method='POST' id='searchform'>
+                {% csrf_token %}
+                <input type="text" name="username" class="form-control" id="id_username" placeholder="User">
+                <br/>
+                
+                <input type="text" name="userprofile__skill" class="form-control" id="id_userprofile__skill" placeholder="Skill">
+                <br/>
+                
+                <input type="text" name="userprofile__job" class="form-control" id="id_userprofile__job" placeholder="Job">
+                <br/>
+                <button type="submit" class="btn btn-lg btn-primary btn-block"  onclick="out()" >Search</button>
+            </form>
+            
+            <div id="output">
+
+            </div>
+            
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+    var r="<p>{{user.username}}</p><p>{{user.userprofile.skill}}</p><p>{{user.userprofile.job}}</p>";
+            
+    function out() {
+        document.getElementById("output").innerHTML = r;
+    }
+</script>
+<!--
 <form role="search" method='POST' id='searchform' style="color:white">
     {% csrf_token %} user : {{userFilter.form.username}}<br/> skill : {{userFilter.form.userprofile__skill}}<br/> job : {{userFilter.form.userprofile__job}}<br/>
     <input type="submit" class="btn btn-primary" value="search" />
@@ -19,5 +61,9 @@
 {% endfor %}
 
 {% comment %} {%endfor%}  {% endcomment %}
+-->
+
+
+
 
 {% endblock %}
