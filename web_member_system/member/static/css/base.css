@@ -51,3 +51,6 @@
     font-size: 17px;
     color: #1467c7;
 }
+.hidden{
+    display: none;
+}

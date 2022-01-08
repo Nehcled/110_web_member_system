@@ -23,6 +23,10 @@
         <div class="col-sm-3"></div>
         <div id ="rcorners" class="col-sm-6">
             <div class="container-fluid " >
+                <div class="center">
+                    <h1>Profile</h1>
+                    <br>
+                </div>
                 <div class="row">
                     <div class="col-sm-7 profile-left" class="font">
                         <div>
@@ -103,7 +107,7 @@
                             {% endwith %}
                             <a href="{% url 'profile-update' %}?next={% url 'profile' %}">編輯資料</a>
                             <a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">上傳頭像</a>
-                            <a href="{% url 'password-change' %}?next={% url 'profile' %}">密碼變更</a>
+                            <a href="{% url 'password-change' %}?next={% url 'profile' %}">變更密碼</a>
                         </div>
                     </div>
                 </div>
