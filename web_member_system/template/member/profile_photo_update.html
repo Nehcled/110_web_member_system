@@ -9,22 +9,16 @@
         <div id ="rcorners" class="col-sm-4">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <br>
-                <center>
-                <h2>Update Profile Photo</h2>
-                <br>
-
-
-                <table>
-                    {{ form.as_table }}
-                </table>
-                
-                <br>
-                <button type="submit">儲 存</button>
-                <button type="button" onclick="goBackPage()">取 消</button>
-
-                </center>
-                <br>
+                <div class="center">
+                  <h1>Update Profile Photo</h1>
+                </div>
+                <div>
+                  {{ form.as_table }}
+                </div>
+                <div class="center">
+                  <button type="submit">儲 存</button>
+                  <button type="button" onclick="goBackPage()">取 消</button>
+                </div>
             </form>
         </div>
         <div class="col-sm-4"></div>

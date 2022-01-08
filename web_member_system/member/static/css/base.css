@@ -32,6 +32,7 @@
     background-color:white;
     margin-bottom: 50px;
     min-height: 500px;
+    padding: 50px 20px;
 }
 .down {
     transform: translateY(50px);
@@ -43,6 +44,10 @@
 .help{
     font-size:10px;
 }
-textarea{
-    resize:none;
+.center{
+    text-align: center;
+}
+.title{
+    font-size: 17px;
+    color: #1467c7;
 }
