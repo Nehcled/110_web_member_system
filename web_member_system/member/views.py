@@ -162,8 +162,8 @@ def index_search(request):
 
     if request.method == "POST":
         userFilter = UserFilter(request.POST, queryset=user)
-        if userFilter.data.get("username") == "":
-            userFilter = empty
+        if userFilter.data.get("username") == "" and userFilter.data.get("userprofile__skill") == "" and userFilter.data.get("userprofile__job") == "":
+            userFilter = empty  
     else:
         userFilter = empty
 
