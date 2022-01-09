@@ -1,9 +1,23 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/helper.css' %}">
+<script src="{% static 'js/helper.js' %}"></script>
 
 <div class="welcome">
     <p>軟體工程學會 - 會員系統</p>
+</div>
+
+<div class="window-helper">
+    <div class="title" id="title-helper" onclick="openOrClose()">Helper</div>
+    <div class="box" id="messages"></div>
+    <div class="typing-area" id="typing-area">
+        <div class="input-field">
+            <input id="input" type="text" placeholder="Enter an option">
+            <button id="reply" class="button" onmouseup="blurButton('reply')">Send</button>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

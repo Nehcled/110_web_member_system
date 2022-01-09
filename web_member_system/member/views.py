@@ -106,7 +106,7 @@ class Card:
         self.exp = "25/01/01"  # Need to add "expiration date" in database.
         self.img = ""
         self.createImage()
-        self.createPdf()
+        self.saveImage()
 
     def createImage(self):
         def generateFontFamily(font_family, size):
@@ -118,7 +118,7 @@ class Card:
         FONT_FAMILY_PATH = {
             "Microsoft JhengHei Bold" : f"{CURRENT_DIRRECT}/static/font_family/Microsoft JhengHei/msjhbd.ttf",
         }
-        self.img = Image.open(f"{CURRENT_DIRRECT}/static/pdf_profile/template.png")
+        self.img = Image.open(f"{CURRENT_DIRRECT}/static/card/template/template.png")
         head_shot = Image.open(f"{CURRENT_DIRRECT}/static/head_shot/{self.headShotPath}").resize((155, 155), Image.ANTIALIAS)
         self.img.paste(head_shot, (50, 77))
         draw = ImageDraw.Draw(self.img)
@@ -129,8 +129,8 @@ class Card:
         drawText(draw, (232, 183), user_id, 35)
         drawText(draw, (386, 266), self.exp, 20)
 
-    def createPdf(self):
-        self.img.save(f"{CURRENT_DIRRECT}/static/pdf_profile/{self.user}.pdf")
+    def saveImage(self):
+        self.img.save(f"{CURRENT_DIRRECT}/static/card/{self.user}.png")
 
 user_logged_in.connect(Card)
 

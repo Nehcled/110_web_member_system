@@ -3,7 +3,7 @@
 {% block content %}
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/profile' %}.css">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
 <style>
     .progress{
         background-color: #b0b0b0;
@@ -16,7 +16,6 @@
         width: {{profile.userprofile.member_exp}}%;
     }
 </style>
-{% block card %} {% endblock %}
 <div class=down>
   <div class="container-fluid">
     <div class="row">
@@ -98,9 +97,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="functions">
-                            {% with 'pdf_profile/'|add:profile.get_username|add:'.pdf' as pdf_profile %}
-                            <a href="{% static pdf_profile %}" target="_blank">會員卡</a>
-                            {% endwith %}
+                            <a href="javascript:openCardWindow()">會員卡</a>
                             <a href="{% url 'profile-update' %}?next={% url 'profile' %}">編輯資料</a>
                             <a href="{% url 'profile-photo-update' %}?next={% url 'profile' %}">上傳頭像</a>
                             <a href="{% url 'password-change' %}?next={% url 'profile' %}">變更密碼</a>
@@ -112,6 +109,21 @@
         <div class="col-sm-3"></div>
     </div>
   </div>
+</div>
+
+<link rel="stylesheet" href="{% static 'css/card.css' %}">
+<div id="window-card" class="window hidden center">
+    <div>
+        {% with 'card/'|add:profile.get_username|add:'.png' as image %}
+        <img src="{% static image %}" alt="Card" id="card">
+        {% endwith %}
+    </div>
+    <div>
+            {% with 'pdf_profile/'|add:profile.get_username|add:'.pdf' as pdf %}
+            <a href="{% static pdf %}" target="_blank" class="button two-buttons-fill">PDF</a>
+            {% endwith %}
+        <button class="button two-buttons-fill" onclick="closeWindow('window-card')" id="close">Close</button>
+    </div>
 </div>
 
 
