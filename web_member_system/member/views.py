@@ -101,7 +101,11 @@ class Card:
     def __init__(self, sender, user, request, **kwargs):
         self.user = user.get_username()
         self.id = user.id
-        self.headShotPath = user.userprofile.head_shot
+        if user.userprofile.profile_photo:
+            path = "\\".join(CURRENT_DIRRECT.split("\\")[:-1])
+            self.headShotPath = f"{path}/upload/{user.userprofile.profile_photo}"
+        else :
+            self.headShotPath = f"{CURRENT_DIRRECT}/static/head_shot/{user.userprofile.head_shot}"
         #self.exp = user.expiration_date
         self.exp = "25/01/01"  # Need to add "expiration date" in database.
         self.img = ""
@@ -120,7 +124,7 @@ class Card:
             "Microsoft JhengHei Bold" : f"{CURRENT_DIRRECT}/static/font_family/Microsoft JhengHei/msjhbd.ttf",
         }
         self.img = Image.open(f"{CURRENT_DIRRECT}/static/card/template/template.png")
-        head_shot = Image.open(f"{CURRENT_DIRRECT}/static/head_shot/{self.headShotPath}").resize((155, 155), Image.ANTIALIAS)
+        head_shot = Image.open(self.headShotPath).resize((155, 155), Image.ANTIALIAS)
         self.img.paste(head_shot, (50, 77))
         draw = ImageDraw.Draw(self.img)
         user_id = str(self.id).zfill(8)
