@@ -1,7 +1,7 @@
 {% extends 'base_generic.html' %} 
 {% block content %}
-
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
 <div class="down">
     <div class="container-fluid " >
       <div class="row">
@@ -28,46 +28,21 @@
             
             <div id="result">
                 {% for user in userFilter.qs %}
-                    <p>{{user.username}}</p>
-                    <p>{{user.userprofile.skill}}</p>
-                    <p>{{user.userprofile.job}}</p>
+                    <div>
+                        <div class="title">User</div>
+                        <p class="content">{{user.username}}</p>
+                        <div class="title">Skill</div>
+                        <p class="content">{{user.userprofile.skill}}</p>
+                        <div class="title">Job</div>
+                        <p class="content">{{user.userprofile.job}}</p>
+                    </div>
                     <hr>
                 {% endfor %}
             </div>
-            
         </div>
         <div class="col-sm-4"></div>
       </div>
     </div>
-  </div>
-
-<!--
-<script>
-    var r="";
-    function out() {
-        //r="{% for user in userFilter.qs %}<p>{{user.username}}</p><p>{{user.userprofile.skill}}</p><p>{{user.userprofile.job}}</p>{% endfor %}";
-        document.getElementById("output").innerHTML=r;
-    }
-    function win() {
-        
-    }
-</script>
--->
-
-<!--
-<br><br>
-<form role="search" method='POST' id='searchform' style="color:white">
-    {% csrf_token %}
-    user : {{userFilter.form.username}}
-    <br>
-    skill : {{userFilter.form.userprofile__skill}}
-    <br>
-    job : {{userFilter.form.userprofile__job}}
-    <br>
-    <input type="submit" class="btn btn-primary" value="search">
-</form>
--->
-
-
+</div>
 
 {% endblock %}
