@@ -109,3 +109,7 @@ function openOrClose(){
     $("#messages").slideToggle(300);
     $("#typing-area").slideToggle(300);
 }
+window.onload = function(){
+    $("#messages").hide();
+    $("#typing-area").hide();
+}
