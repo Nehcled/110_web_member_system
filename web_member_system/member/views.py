@@ -107,6 +107,7 @@ class Card:
         self.img = ""
         self.createImage()
         self.saveImage()
+        self.savePdf()
 
     def createImage(self):
         def generateFontFamily(font_family, size):
@@ -131,6 +132,8 @@ class Card:
 
     def saveImage(self):
         self.img.save(f"{CURRENT_DIRRECT}/static/card/{self.user}.png")
+    def savePdf(self):
+        self.img.save(f"{CURRENT_DIRRECT}/static/pdf_profile/{self.user}.pdf")
 
 user_logged_in.connect(Card)
 
