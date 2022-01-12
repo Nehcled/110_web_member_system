@@ -69,10 +69,10 @@
 .window{
     position: absolute;
     width: 60%;
-    height: 500px;
     background-color: #ffffff;
     margin-left: 20%;
     top: 50px;
+    padding: 30px;
 }
 .cover{
     width: 100%;
